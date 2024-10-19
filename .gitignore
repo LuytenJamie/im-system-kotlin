@@ -39,5 +39,6 @@ out/
 ### Kotlin ###
 .kotlin
 
+### PostgreSQL
+data
 
-/data/pg_stat_tmp/
