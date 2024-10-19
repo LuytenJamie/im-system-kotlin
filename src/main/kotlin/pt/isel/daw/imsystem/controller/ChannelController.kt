@@ -18,14 +18,6 @@ import pt.isel.daw.imsystem.service.ChannelService
 class ChannelController(
     private val channelService: ChannelService
 ) {
-    @GetMapping("/currentUser")
-    fun getCurrentUser(@AuthenticationPrincipal currentUser: User): ResponseEntity<User> {
-        return if (currentUser != null) {
-            ResponseEntity.ok(currentUser)
-        } else {
-            ResponseEntity.badRequest().body(null)
-        }
-    }
     @PostMapping("/create")
     fun createChannel(
         @RequestBody request: CreateChannelInputModel,

@@ -11,7 +11,6 @@ import pt.isel.daw.imsystem.service.ChannelInvitationService
 class ChannelInvitationController(
     private val channelInvitationService: ChannelInvitationService
 ) {
-    // API to create an invitation
     @PostMapping("/create")
     fun createInvitation(
         @RequestBody channelInvitationInputModel: ChannelInvitationInputModel

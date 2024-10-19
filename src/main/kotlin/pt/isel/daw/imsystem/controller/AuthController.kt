@@ -14,7 +14,7 @@ import pt.isel.daw.imsystem.service.AuthService
 import java.lang.Exception
 
 @RestController
-@RequestMapping("api/auth") // Better to have a separate path for auth-related operations
+@RequestMapping("api/auth")
 class AuthController(private val authService: AuthService) {
 
     @PostMapping("/register")
