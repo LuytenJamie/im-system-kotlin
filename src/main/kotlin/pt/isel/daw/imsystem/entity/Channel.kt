@@ -41,7 +41,7 @@ data class Channel(
             users.contains(inviter) && hasReadWriteAccess(inviter)
         }
     }
-    private fun hasReadWriteAccess(user: User): Boolean {
+    fun hasReadWriteAccess(user: User): Boolean {
         return userAccesses.any { it.user == user && it.accessLevel == AccessLevel.READ_WRITE }
     }
     fun addUser(user: User) {
