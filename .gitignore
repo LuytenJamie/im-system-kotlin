@@ -38,3 +38,6 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+
+/data/pg_stat_tmp/
