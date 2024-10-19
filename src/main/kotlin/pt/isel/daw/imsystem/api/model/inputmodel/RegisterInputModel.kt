@@ -6,5 +6,5 @@ data class RegisterInputModel(
     val username: String,
     val password: String,
     val role: Role,
-    val invitationId: Long
+    val invitationId: String
 )
