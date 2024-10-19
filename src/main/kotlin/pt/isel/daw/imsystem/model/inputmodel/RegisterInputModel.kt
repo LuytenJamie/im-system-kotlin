@@ -5,5 +5,6 @@ import pt.isel.daw.imsystem.entity.Role
 data class RegisterInputModel(
     val username: String,
     val password: String,
-    val role: Role
+    val role: Role,
+    val invitationId: Long
 )

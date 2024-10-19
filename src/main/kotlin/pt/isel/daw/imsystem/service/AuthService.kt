@@ -10,6 +10,7 @@ import pt.isel.daw.imsystem.model.inputmodel.LoginInputModel
 import pt.isel.daw.imsystem.model.inputmodel.RegisterInputModel
 import pt.isel.daw.imsystem.model.outputmodel.LoginOutputModel
 import pt.isel.daw.imsystem.model.outputmodel.RegisterOutputModel
+import pt.isel.daw.imsystem.repository.UserInvitationRepository
 import pt.isel.daw.imsystem.repository.UserRepository
 import pt.isel.daw.imsystem.security.JwtUtil
 import java.util.*
@@ -19,14 +20,37 @@ class AuthService(
     private val userRepository: UserRepository,
     private val userService: UserService,
     private val passwordEncoder: BCryptPasswordEncoder,
-    private val jwtUtil: JwtUtil
+    private val jwtUtil: JwtUtil,
+    private val userInvitationRepository: UserInvitationRepository
 ) {
     fun registerUser(request: RegisterInputModel): RegisterOutputModel {
         // Check if the username already exists
         if (userRepository.existsByUsername(request.username)) {
             throw UserAlreadyExistsException("Username with username: " + request.username + " already exists")
         }
+        val existingUsers = userRepository.findAll()
 
+        // If no users, allow registration without invite
+        if (existingUsers.isEmpty()) {
+            val user = User(
+                username = request.username,
+                password = request.password,
+                role = request.role
+            )
+            val savedUser = userService.addUser(user.username, user.password, user.getRole())
+            return RegisterOutputModel(
+                id = savedUser.getId(),
+                username = savedUser.username,
+                role = savedUser.getRole(),
+                status = "Succesfully created first user without invitation"
+            )
+        }
+        val userInvitation = userInvitationRepository.findById(request.invitationId)
+            .orElseThrow { IllegalArgumentException("Invalid invitation ID: ${request.invitationId}") }
+
+        if (userInvitation.isUsed) {
+            throw IllegalArgumentException("This invitation has already been used")
+        }
         // Create a new user
         val user = User(
             username = request.username,
@@ -37,11 +61,15 @@ class AuthService(
         // Save the user to the database
         val savedUser = userService.addUser(user.username, user.password, user.getRole())
 
+        // Mark the user invitation as used
+        userInvitation.isUsed = true
+        userInvitationRepository.save(userInvitation)
+
         return RegisterOutputModel(
             id = savedUser.getId(),
             username = savedUser.username,
             role = savedUser.getRole(),
-            status = "Success"
+            status = "Successfully created user with invitation"
         )
     }
     fun loginUser(request: LoginInputModel): LoginOutputModel {
