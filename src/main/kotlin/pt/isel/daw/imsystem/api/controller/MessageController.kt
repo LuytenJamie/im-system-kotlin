@@ -1,5 +1,6 @@
 package pt.isel.daw.imsystem.api.controller
 
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.GetMapping
@@ -24,8 +25,18 @@ class MessageController(
         @RequestBody request: PostMessageInputModel,
         @AuthenticationPrincipal currentUser: User
     ): ResponseEntity<MessageOutputModel> {
-        val message = messageService.postMessage(channelId, request.text, currentUser)
-        return ResponseEntity.ok(MessageOutputModel(message.id, message.text, message.user.username, message.createdAt.toString()))
+        return try {
+            val message = messageService.postMessage(channelId, request.text, currentUser)
+            ResponseEntity.ok(MessageOutputModel(message.id, message.text, message.user.username, message.createdAt.toString()))
+        } catch (e: AccessDeniedException) {
+            val errorMessage = MessageOutputModel(
+                id = -1,
+                text = e.message ?: "Access Denied",
+                username = "Error",
+                createdAt = ""
+            )
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorMessage)
+        }
     }
     @GetMapping("/{channelId}")
     fun getMessages(@PathVariable channelId: Long): ResponseEntity<List<MessageOutputModel>> {
