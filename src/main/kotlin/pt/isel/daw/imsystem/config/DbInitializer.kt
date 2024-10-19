@@ -3,7 +3,6 @@ package pt.isel.daw.imsystem.config
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 import pt.isel.daw.imsystem.entity.Role
-import pt.isel.daw.imsystem.entity.User
 import pt.isel.daw.imsystem.service.UserService
 
 @Component
