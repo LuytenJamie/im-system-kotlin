@@ -9,6 +9,7 @@ import pt.isel.daw.imsystem.entity.User
 import pt.isel.daw.imsystem.entity.UserInvitation
 import pt.isel.daw.imsystem.repository.UserInvitationRepository
 import pt.isel.daw.imsystem.repository.UserRepository
+import java.util.*
 
 @Service
 class UserInvitationService(
@@ -16,8 +17,8 @@ class UserInvitationService(
     @Autowired private val userRepository: UserRepository
 ) {
     fun createUserInvitation(username: String): UserInvitation {
-        val creator = getCurrentUser() // Implement this to fetch the current user
-        val userInvitation = UserInvitation(username = username, creator = creator)
+        val creator = getCurrentUser()
+        val userInvitation = UserInvitation(username = username, creator = creator, token = generateUniqueCode())
         return userInvitationRepository.save(userInvitation)
     }
 
@@ -36,5 +37,8 @@ class UserInvitationService(
         // Fetch the user from the repository and handle Optional
         return userRepository.findByUsername(username)
             .orElseThrow { IllegalArgumentException("User not found") }
+    }
+    private fun generateUniqueCode(): String {
+        return UUID.randomUUID().toString()
     }
 }

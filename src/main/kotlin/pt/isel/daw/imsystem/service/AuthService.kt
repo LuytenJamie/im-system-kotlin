@@ -45,7 +45,7 @@ class AuthService(
                 status = "Succesfully created first user without invitation"
             )
         }
-        val userInvitation = userInvitationRepository.findById(request.invitationId)
+        val userInvitation = userInvitationRepository.findByToken(request.invitationId)
             .orElseThrow { IllegalArgumentException("Invalid invitation ID: ${request.invitationId}") }
 
         if (userInvitation.isUsed) {
