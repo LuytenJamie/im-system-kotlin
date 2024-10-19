@@ -7,7 +7,7 @@ import pt.isel.daw.imsystem.entity.ChannelInvitation
 import pt.isel.daw.imsystem.entity.User
 import pt.isel.daw.imsystem.exception.InvalidInvitationException
 import pt.isel.daw.imsystem.exception.NotFoundException
-import pt.isel.daw.imsystem.model.inputmodel.ChannelInvitationInputModel
+import pt.isel.daw.imsystem.api.model.inputmodel.ChannelInvitationInputModel
 import pt.isel.daw.imsystem.repository.ChannelInvitationRepository
 import pt.isel.daw.imsystem.repository.ChannelRepository
 import pt.isel.daw.imsystem.repository.UserRepository
