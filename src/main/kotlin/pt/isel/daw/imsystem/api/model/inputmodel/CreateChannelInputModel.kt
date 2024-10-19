@@ -1,4 +1,4 @@
-package pt.isel.daw.imsystem.model.inputmodel
+package pt.isel.daw.imsystem.api.model.inputmodel
 
 data class CreateChannelInputModel(
     val name: String,

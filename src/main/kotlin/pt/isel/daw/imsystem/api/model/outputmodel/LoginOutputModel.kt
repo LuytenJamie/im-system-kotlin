@@ -1,8 +1,7 @@
-package pt.isel.daw.imsystem.model.outputmodel
+package pt.isel.daw.imsystem.api.model.outputmodel
 
 import pt.isel.daw.imsystem.entity.Role
-import pt.isel.daw.imsystem.model.inputmodel.LoginInputModel
-import pt.isel.daw.imsystem.model.inputmodel.RegisterInputModel
+import pt.isel.daw.imsystem.api.model.inputmodel.LoginInputModel
 
 class LoginOutputModel(
     val loginInputModel: LoginInputModel,

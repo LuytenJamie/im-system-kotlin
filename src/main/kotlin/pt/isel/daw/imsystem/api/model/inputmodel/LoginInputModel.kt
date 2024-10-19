@@ -1,4 +1,4 @@
-package pt.isel.daw.imsystem.model.inputmodel
+package pt.isel.daw.imsystem.api.model.inputmodel
 
 import org.jetbrains.annotations.NotNull
 import pt.isel.daw.imsystem.entity.Role

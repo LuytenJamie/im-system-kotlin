@@ -1,4 +1,4 @@
-package pt.isel.daw.imsystem.controller
+package pt.isel.daw.imsystem.api.controller
 
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.annotation.AuthenticationPrincipal
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import pt.isel.daw.imsystem.entity.User
-import pt.isel.daw.imsystem.model.inputmodel.CreateChannelInputModel
-import pt.isel.daw.imsystem.model.outputmodel.ChannelOutputModel
+import pt.isel.daw.imsystem.api.model.inputmodel.CreateChannelInputModel
+import pt.isel.daw.imsystem.api.model.outputmodel.ChannelOutputModel
 import pt.isel.daw.imsystem.service.ChannelService
 
 @RestController

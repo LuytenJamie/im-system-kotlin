@@ -1,4 +1,4 @@
-package pt.isel.daw.imsystem.controller
+package pt.isel.daw.imsystem.api.controller
 
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
@@ -6,10 +6,10 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import pt.isel.daw.imsystem.exception.RegisterException
 import pt.isel.daw.imsystem.exception.UserAlreadyExistsException
-import pt.isel.daw.imsystem.model.inputmodel.LoginInputModel
-import pt.isel.daw.imsystem.model.inputmodel.RegisterInputModel
-import pt.isel.daw.imsystem.model.outputmodel.LoginOutputModel
-import pt.isel.daw.imsystem.model.outputmodel.RegisterOutputModel
+import pt.isel.daw.imsystem.api.model.inputmodel.LoginInputModel
+import pt.isel.daw.imsystem.api.model.inputmodel.RegisterInputModel
+import pt.isel.daw.imsystem.api.model.outputmodel.LoginOutputModel
+import pt.isel.daw.imsystem.api.model.outputmodel.RegisterOutputModel
 import pt.isel.daw.imsystem.service.AuthService
 import java.lang.Exception
 

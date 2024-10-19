@@ -1,9 +1,9 @@
-package pt.isel.daw.imsystem.controller
+package pt.isel.daw.imsystem.api.controller
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import pt.isel.daw.imsystem.model.inputmodel.ChannelInvitationInputModel
-import pt.isel.daw.imsystem.model.outputmodel.ChannelInvitationOutputModel
+import pt.isel.daw.imsystem.api.model.inputmodel.ChannelInvitationInputModel
+import pt.isel.daw.imsystem.api.model.outputmodel.ChannelInvitationOutputModel
 import pt.isel.daw.imsystem.service.ChannelInvitationService
 
 @RestController

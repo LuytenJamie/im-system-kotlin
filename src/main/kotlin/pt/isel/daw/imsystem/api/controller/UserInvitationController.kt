@@ -1,4 +1,4 @@
-package pt.isel.daw.imsystem.controller
+package pt.isel.daw.imsystem.api.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PostMapping

@@ -1,4 +1,4 @@
-package pt.isel.daw.imsystem.model.outputmodel
+package pt.isel.daw.imsystem.api.model.outputmodel
 
 data class ChannelOutputModel(
     val id: Long,

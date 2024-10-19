@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service
 import pt.isel.daw.imsystem.entity.User
 import pt.isel.daw.imsystem.exception.LoginException
 import pt.isel.daw.imsystem.exception.UserAlreadyExistsException
-import pt.isel.daw.imsystem.model.inputmodel.LoginInputModel
-import pt.isel.daw.imsystem.model.inputmodel.RegisterInputModel
-import pt.isel.daw.imsystem.model.outputmodel.LoginOutputModel
-import pt.isel.daw.imsystem.model.outputmodel.RegisterOutputModel
+import pt.isel.daw.imsystem.api.model.inputmodel.LoginInputModel
+import pt.isel.daw.imsystem.api.model.inputmodel.RegisterInputModel
+import pt.isel.daw.imsystem.api.model.outputmodel.LoginOutputModel
+import pt.isel.daw.imsystem.api.model.outputmodel.RegisterOutputModel
 import pt.isel.daw.imsystem.repository.UserInvitationRepository
 import pt.isel.daw.imsystem.repository.UserRepository
 import pt.isel.daw.imsystem.security.JwtUtil
